@@ -12,6 +12,16 @@ const sendFormBtn = document.createElement('button')
 sendFormBtn.textContent = 'Enviar Nombres'
 sendFormBtn.className = 'btn btn-primary'
 
+// Adds name fields
+sendQuantityBtn.addEventListener('click', () => {
+  removeElements($$('#form > input[name*=name], #form > h2'))
+  form.appendChild(createHeader('Nombres'))
+  for (let i = 0; i < quantity.value; i++) {
+    createNameFields(i)
+  }
+  form.appendChild(sendFormBtn)
+})
+
 // Takes every name and do the thing
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -38,15 +48,6 @@ form.addEventListener('submit', e => {
   for (let i = 0; i <= 1; i++) {
     namesSection.appendChild(createRandomName(names))
   }
-})
-
-// Adds name fields
-sendQuantityBtn.addEventListener('click', () => {
-  removeElements($$('#form > input[name*=name]'))
-  for (let i = 0; i < quantity.value; i++) {
-    createNameFields(i)
-  }
-  form.appendChild(sendFormBtn)
 })
 
 const createNameFields = idx => {
@@ -86,4 +87,13 @@ const createHeader = title => {
 
 const checkMaxLength = obj => {
   obj.value = Math.min(Math.max(obj.value, obj.min), obj.max)
+}
+
+const increaseValue = () => {
+  quantity.value++
+  checkMaxLength(quantity)
+}
+const decreaseValue = () => {
+  quantity.value--
+  checkMaxLength(quantity)
 }
