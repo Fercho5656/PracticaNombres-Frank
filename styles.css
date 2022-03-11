@@ -12,6 +12,7 @@
 :root {
   --primary-color: #333;
   --accent-color: #ff3414;
+  --accent-color-dark: #ce1c00;
 }
 
 body {
@@ -23,6 +24,13 @@ body {
   color: #eee;
   padding-top: 25px;
   padding: 25px 10px;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -55,19 +63,39 @@ label {
   outline: 0;
 }
 
-.button-in > button {
+.button-in > .action-buttons {
   position: absolute;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  display: inline-flex;
   right: 0;
   z-index: 2;
   width: 30%;
   height: 30px;
-  cursor: pointer;
   transform: translateX(2px);
   border-radius: 15px;
   border: 2px solid #fff;
-  font-weight: 500;
-  color: #fff;
-  background-color: var(--accent-color);
+}
+
+.action-buttons > button {
+  width: 50%;
+  height: 100%;
+  padding: 0;
+}
+
+button.btn-minus {
+  border-radius: 15px 0 0 15px;
+}
+
+button.btn-plus {
+  border-radius: 0 15px 15px 0;
+}
+
+#sendQuantityBtn {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 form {
@@ -75,16 +103,22 @@ form {
   grid-template-columns: 1fr 1fr;
 }
 
+form > h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  grid-column: 1 / span 2;
+}
+
 form > button:last-child {
   margin: 10px 0;
   grid-column: 1 / span 2;
 }
 
-form > input:first-child {
+form > input:nth-child(2) {
   border-top-left-radius: 5px;
 }
 
-form > input:nth-child(2) {
+form > input:nth-child(3) {
   border-top-right-radius: 5px;
 }
 
@@ -110,7 +144,6 @@ form > input:nth-last-child(2) {
 }
 
 .btn {
-  display: block;
   font-weight: 700;
   font-size: 1rem;
   padding: 10px;
@@ -120,8 +153,13 @@ form > input:nth-last-child(2) {
 }
 
 .btn-primary {
+  transition: all 0.2s ease-in-out;
   background-color: var(--accent-color);
   color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color-dark);
 }
 
 p {

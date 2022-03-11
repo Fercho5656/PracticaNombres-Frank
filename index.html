@@ -12,21 +12,34 @@
     />
   </head>
   <body>
-    <h1>Practica de la Unidad</h1>
-    <label for="quantity">Cantidad de Nombres</label>
-    <div class="button-in">
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        max="999"
-        oninput="checkMaxLength(this)"
-      />
-      <button id="sendQuantityBtn">Enviar</button>
+    <div class="container">
+      <h1>Practica de la Unidad</h1>
+      <br />
+      <label for="quantity">Cantidad de Nombres</label>
+      <div class="button-in">
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="1"
+          max="999"
+          oninput="checkMaxLength(this)"
+        />
+        <div class="action-buttons">
+          <button class="btn btn-primary btn-minus" onclick="decreaseValue()">
+            -
+          </button>
+          <button class="btn btn-primary btn-plus" onclick="increaseValue()">
+            +
+          </button>
+        </div>
+      </div>
+      <button id="sendQuantityBtn" class="btn btn-primary">Enviar</button>
+      <br />
+      <form id="form"></form>
+      <br />
+      <section id="names"></section>
     </div>
-    <form id="form"></form>
-    <section id="names"></section>
   </body>
   <script src="index.js"></script>
 </html>
